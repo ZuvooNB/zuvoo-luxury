@@ -12,27 +12,36 @@
   <title>ZUVOO LUXURY</title>
   <link rel="icon" type="image/jpeg" href="favicon.jpeg">
 
-  /* CONTACT */
-.contact {
-  margin-top: 60px;
+/* CONTACT BAR */
+.contact-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.25); /* dunkler, aber elegant */
+  padding: 20px 0;
   text-align: center;
-  font-size: 14px;
-  letter-spacing: 1px;
+  backdrop-filter: blur(6px); /* sehr edel */
 }
 
-.contact p {
-  margin-bottom: 8px;
+.contact-bar p {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 2px;
   opacity: 0.6;
   text-transform: uppercase;
 }
 
-.contact a {
-  color: inherit;
+.contact-bar a {
+  display: block;
+  margin-top: 6px;
+  color: white;
   text-decoration: none;
+  font-size: 14px;
   font-weight: 300;
 }
 
-.contact a:hover {
+.contact-bar a:hover {
   opacity: 0.8;
 }
     body{
@@ -79,9 +88,12 @@
     <img src="BildZuvooLogo.pgn.jpeg" class="logo" alt="ZUVOO Luxury Logo">
     <h1>ZUVOO LUXURY</h1>
     <p>Coming Soon</p>
-    <div class="contact">
+   <div class="contact-bar">
   <p>Contact</p>
-  <a href="mailto:info@zuvoo-luxury.com">info@zuvoo-luxury.com</a>
+  <a href="mailto:info@zuvoo-luxury.com">
+    info@zuvoo-luxury.com
+  </a>
+</div>
 </div>
  
 </div>
