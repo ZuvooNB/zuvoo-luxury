@@ -42,6 +42,7 @@
       text-transform: uppercase;
       color: #c9ab63;
       opacity: 0.85;
+      cursor: pointer;
     }
 
     .top-bar a:hover {
@@ -50,7 +51,7 @@
 
     .wrap {
       text-align: center;
-      margin-top: 56px; /* Platz für Top-Bar */
+      margin-top: 56px;
     }
 
     .logo {
@@ -124,12 +125,13 @@
 
   <!-- TOP BAR -->
   <div class="top-bar">
-    <a href="#">Home</a>
-    <a href="#">Vision</a>
-    <a href="#">About us</a>
+    <a onclick="showHome()">Home</a>
+    <a onclick="hideContent()">Vision</a>
+    <a onclick="hideContent()">About us</a>
   </div>
 
-  <div class="wrap">
+  <!-- MAIN CONTENT -->
+  <div class="wrap" id="mainContent">
     <img src="BildZuvooLogo.pgn.jpeg" class="logo" alt="ZUVOO Luxury Logo">
     <h1>ZUVOO</h1>
     <p class="coming-soon">Coming Soon</p>
@@ -143,6 +145,17 @@
       info@zuvoo-luxury.com
     </a>
   </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function hideContent() {
+      document.getElementById("mainContent").style.display = "none";
+    }
+
+    function showHome() {
+      document.getElementById("mainContent").style.display = "block";
+    }
+  </script>
 
 </body>
 </html>
