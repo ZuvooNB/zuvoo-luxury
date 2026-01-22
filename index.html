@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZUVOO</title>
 
-  <!-- FAVICON -->
   <link rel="icon" type="image/jpeg" href="favicon.jpeg">
 
   <style>
@@ -52,6 +51,7 @@
     .wrap {
       text-align: center;
       margin-top: 56px;
+      transition: opacity 0.4s ease;
     }
 
     .logo {
@@ -76,6 +76,29 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: rgba(201,171,99,0.75);
+    }
+
+    /* ABOUT US */
+    .about {
+      max-width: 700px;
+      padding: 0 24px;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .about h2 {
+      color: #c9ab63;
+      letter-spacing: 0.12em;
+      font-size: 26px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .about p {
+      color: rgba(201,171,99,0.85);
+      font-size: 16px;
+      line-height: 1.8;
     }
 
     /* CONTACT BAR */
@@ -126,15 +149,35 @@
   <!-- TOP BAR -->
   <div class="top-bar">
     <a onclick="showHome()">Home</a>
-    <a onclick="hideContent()">Vision</a>
-    <a onclick="hideContent()">About us</a>
+    <a onclick="showVision()">Vision</a>
+    <a onclick="showAbout()">About us</a>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="wrap" id="mainContent">
+  <!-- HOME CONTENT -->
+  <div class="wrap" id="home">
     <img src="BildZuvooLogo.pgn.jpeg" class="logo" alt="ZUVOO Luxury Logo">
     <h1>ZUVOO</h1>
     <p class="coming-soon">Coming Soon</p>
+  </div>
+
+  <!-- ABOUT US CONTENT -->
+  <div class="wrap about" id="about">
+    <h2>About Us</h2>
+    <p>
+      ZUVOO is a creative luxury studio driven by the pursuit of refinement,
+      precision, and timeless design.
+      <br><br>
+      Born from a passion for aesthetics and detail, ZUVOO stands for a modern
+      interpretation of luxury — subtle, intentional, and uncompromising.
+      We believe that true luxury does not shout. It speaks quietly through
+      quality, balance, and meaning.
+      <br><br>
+      Every concept, every idea, and every decision is shaped by a long-term
+      vision: to create products and experiences that feel considered, elegant,
+      and enduring.
+      <br><br>
+      This is only the beginning.
+    </p>
   </div>
 
   <!-- CONTACT BAR -->
@@ -148,22 +191,26 @@
 
   <!-- SCRIPT -->
   <script>
-  function hideContent() {
-    const el = document.getElementById("mainContent");
-    el.style.opacity = "0";
-    el.style.pointerEvents = "none";
-    el.style.height = "0";
-    el.style.margin = "0";
-  }
+    function showHome() {
+      document.getElementById("home").style.display = "block";
+      document.getElementById("home").style.opacity = "1";
+      document.getElementById("about").style.display = "none";
+    }
 
-  function showHome() {
-    const el = document.getElementById("mainContent");
-    el.style.opacity = "1";
-    el.style.pointerEvents = "auto";
-    el.style.height = "auto";
-    el.style.marginTop = "56px";
-  }
-</script>
+    function showAbout() {
+      document.getElementById("home").style.opacity = "0";
+      setTimeout(() => {
+        document.getElementById("home").style.display = "none";
+        document.getElementById("about").style.display = "block";
+        document.getElementById("about").style.opacity = "1";
+      }, 200);
+    }
+
+    function showVision() {
+      document.getElementById("home").style.display = "none";
+      document.getElementById("about").style.display = "none";
+    }
+  </script>
 
 </body>
 </html>
