@@ -148,14 +148,22 @@
 
   <!-- SCRIPT -->
   <script>
-    function hideContent() {
-      document.getElementById("mainContent").style.display = "none";
-    }
+  function hideContent() {
+    const el = document.getElementById("mainContent");
+    el.style.opacity = "0";
+    el.style.pointerEvents = "none";
+    el.style.height = "0";
+    el.style.margin = "0";
+  }
 
-    function showHome() {
-      document.getElementById("mainContent").style.display = "block";
-    }
-  </script>
+  function showHome() {
+    const el = document.getElementById("mainContent");
+    el.style.opacity = "1";
+    el.style.pointerEvents = "auto";
+    el.style.height = "auto";
+    el.style.marginTop = "56px";
+  }
+</script>
 
 </body>
 </html>
