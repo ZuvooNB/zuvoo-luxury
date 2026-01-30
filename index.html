@@ -1,216 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZUVOO</title>
+<meta charset="UTF-8">
+<title>ZUVOO — Silent Luxury</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" type="image/jpeg" href="favicon.jpeg">
+<!-- FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background: #4b0b2b;
-      font-family: "Times New Roman", Georgia, serif;
-      padding-bottom: 100px;
-    }
+<style>
+:root {
+  --bg: #4b0f2c;
+  --gold: #d4af6a;
+  --text: #f3e9dc;
+}
 
-    /* TOP NAVIGATION */
-    .top-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 56px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 48px;
-      background: rgba(0, 0, 0, 0.15);
-      backdrop-filter: blur(6px);
-      z-index: 10;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .top-bar a {
-      text-decoration: none;
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #c9ab63;
-      opacity: 0.85;
-      cursor: pointer;
-    }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
 
-    .top-bar a:hover {
-      opacity: 1;
-    }
+/* NAV */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 22px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(75,15,44,0.95);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
 
-    .wrap {
-      text-align: center;
-      margin-top: 56px;
-      transition: opacity 0.4s ease;
-    }
+.logo {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+  font-size: 22px;
+  letter-spacing: 2px;
+}
 
-    .logo {
-      width: 420px;
-      max-width: 80vw;
-      margin-bottom: 24px;
-      filter: drop-shadow(0 12px 22px rgba(0,0,0,0.35));
-    }
+nav a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 14px;
+  opacity: 0.8;
+}
 
-    h1 {
-      margin: 0;
-      font-size: 56px;
-      letter-spacing: 0.08em;
-      font-weight: 500;
-      color: #c9ab63;
-      text-transform: uppercase;
-    }
+nav a:hover {
+  opacity: 1;
+}
 
-    .coming-soon {
-      margin-top: 12px;
-      font-size: 16px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(201,171,99,0.75);
-    }
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+}
 
-    /* ABOUT US */
-    .about {
-      max-width: 700px;
-      padding: 0 24px;
-      display: none;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
+/* IMAGE PLACEHOLDER:
+   → Hier kannst du später ein Hintergrundbild setzen
+   → Entweder per CSS background-image oder <img> */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-size: cover;
+  background-position: center;
+  /* background-image: url("YOUR-HERO-IMAGE.jpg"); */
+}
 
-    .about h2 {
-      color: #c9ab63;
-      letter-spacing: 0.12em;
-      font-size: 26px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
+.hero-content {
+  position: relative;
+}
 
-    .about p {
-      color: rgba(201,171,99,0.85);
-      font-size: 16px;
-      line-height: 1.8;
-    }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  color: var(--gold);
+}
 
-    /* CONTACT BAR */
-    .contact-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.28);
-      backdrop-filter: blur(6px);
-      padding: 18px 0;
-      text-align: center;
-    }
+.hero p {
+  font-size: 18px;
+  margin-top: 10px;
+  opacity: 0.85;
+}
 
-    .contact-bar p {
-      margin: 0;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      opacity: 0.6;
-      color: #ffffff;
-    }
+/* SECTIONS */
+.section {
+  padding: 160px 20%;
+  text-align: center;
+}
 
-    .contact-bar .social {
-      margin-top: 8px;
-      font-size: 13px;
-      letter-spacing: 1px;
-      color: rgba(255,255,255,0.8);
-    }
+.section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
 
-    .contact-bar a {
-      display: block;
-      margin-top: 6px;
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 300;
-    }
+.section p {
+  font-size: 18px;
+  opacity: 0.9;
+}
 
-    .contact-bar a:hover {
-      opacity: 0.8;
-    }
-  </style>
+/* FUTURE OBJECTS GRID */
+.future-grid {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+}
+
+.future-item {
+  border: 1px solid rgba(212,175,106,0.25);
+  padding: 40px;
+}
+
+/* IMAGE PLACEHOLDER:
+   → Hier kommt z. B. Uhr / Parfum / Box */
+.future-item img {
+  width: 100%;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+/* FOOTER */
+footer {
+  padding: 100px 0;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+/* ANIMATION */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
 
 <body>
 
-  <!-- TOP BAR -->
-  <div class="top-bar">
-    <a onclick="showHome()">Home</a>
-    <a onclick="showVision()">Vision</a>
-    <a onclick="showAbout()">About us</a>
-  </div>
+<header>
+  <div class="logo">ZUVOO</div>
+  <nav>
+    <a href="#vision">Vision</a>
+    <a href="#philosophy">Philosophy</a>
+    <a href="#future">Future</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
 
-  <!-- HOME CONTENT -->
-  <div class="wrap" id="home">
-    <img src="BildZuvooLogo.pgn.jpeg" class="logo" alt="ZUVOO Luxury Logo">
-    <h1>ZUVOO</h1>
-    <p class="coming-soon">Coming Soon</p>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Luxury, refined.</h1>
+    <p>Not louder. Not faster. Just better.</p>
   </div>
+</section>
 
-  <!-- ABOUT US CONTENT -->
-  <div class="wrap about" id="about">
-    <h2>About Us</h2>
-    <p>
-      ZUVOO is a creative luxury studio driven by the pursuit of refinement,
-      precision, and timeless design.
-      <br><br>
-      Born from a passion for aesthetics and detail, ZUVOO stands for a modern
-      interpretation of luxury — subtle, intentional, and uncompromising.
-      We believe that true luxury does not shout. It speaks quietly through
-      quality, balance, and meaning.
-      <br><br>
-      Every concept, every idea, and every decision is shaped by a long-term
-      vision: to create products and experiences that feel considered, elegant,
-      and enduring.
-      <br><br>
-      This is only the beginning.
-    </p>
+<section id="vision" class="section fade">
+  <h2>Vision</h2>
+  <p>
+    ZUVOO exists to redefine luxury for a new generation —  
+    subtle, intentional, and uncompromising.
+  </p>
+</section>
+
+<section id="philosophy" class="section fade">
+  <h2>Philosophy</h2>
+  <p>
+    True luxury does not shout.  
+    It speaks quietly through quality, balance, and meaning.
+  </p>
+</section>
+
+<section id="future" class="section fade">
+  <h2>Future Objects</h2>
+
+  <div class="future-grid">
+
+    <div class="future-item">
+      <!-- IMAGE: FUTURE OBJECT 1 (z. B. Uhr) -->
+      <!-- <img src="obsidian-watch.jpg" alt="Obsidian I"> -->
+      <p>Obsidian I — Time, reduced to its essence.</p>
+    </div>
+
+    <div class="future-item">
+      <!-- IMAGE: FUTURE OBJECT 2 (Parfum) -->
+      <!-- <img src="orryx-noir.jpg" alt="Orryx Noir"> -->
+      <p>Orryx Noir — Presence, distilled.</p>
+    </div>
+
+    <div class="future-item">
+      <!-- IMAGE: FUTURE OBJECT 3 (Box) -->
+      <!-- <img src="watch-box.jpg" alt="ZUVOO Watch Box"> -->
+      <p>Objects meant to be respected.</p>
+    </div>
+
   </div>
+</section>
 
-  <!-- CONTACT BAR -->
-  <div class="contact-bar">
-    <p>Contact</p>
-    <div class="social">Follow us on X: @zuvoostudio</div>
-    <a href="mailto:info@zuvoo-luxury.com">
-      info@zuvoo-luxury.com
-    </a>
-  </div>
+<section id="about" class="section fade">
+  <h2>About ZUVOO</h2>
+  <p>
+    ZUVOO is a creative luxury studio driven by refinement, precision,  
+    and a long-term vision to create objects that endure.
+  </p>
+</section>
 
-  <!-- SCRIPT -->
-  <script>
-    function showHome() {
-      document.getElementById("home").style.display = "block";
-      document.getElementById("home").style.opacity = "1";
-      document.getElementById("about").style.display = "none";
+<footer>
+  <p>© ZUVOO Luxury Studio</p>
+  <p>info@zuvoo-luxury.com</p>
+  <p>Follow us on X: @zuvoostudio</p>
+</footer>
+
+<script>
+const faders = document.querySelectorAll('.fade');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
     }
+  });
+}, { threshold: 0.2 });
 
-    function showAbout() {
-      document.getElementById("home").style.opacity = "0";
-      setTimeout(() => {
-        document.getElementById("home").style.display = "none";
-        document.getElementById("about").style.display = "block";
-        document.getElementById("about").style.opacity = "1";
-      }, 200);
-    }
-
-    function showVision() {
-      document.getElementById("home").style.display = "none";
-      document.getElementById("about").style.display = "none";
-    }
-  </script>
+faders.forEach(fade => observer.observe(fade));
+</script>
 
 </body>
 </html>
