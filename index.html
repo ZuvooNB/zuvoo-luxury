@@ -1,225 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>ZUVOO — Luxury Studio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>ZUVOO — Quiet Luxury Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.jpeg">
 
-  <!-- FAVICON -->
-  <link rel="icon" href="favicon.jpeg">
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
-  <!-- FONTS -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
 
-  <style>
-    :root {
-      --bg: #4a0f2b;
-      --gold: #d8b36a;
-      --text: #f2e8d8;
-      --muted: rgba(242,232,216,0.7);
-    }
+/* ======================================================
+   ROOT / VARIABLES
+====================================================== */
+:root {
+  --bg-main: #4a0f2b;
+  --bg-dark: #3a0b22;
+  --gold: #d8b36a;
+  --gold-soft: rgba(216,179,106,0.35);
+  --text-main: #f2e8d8;
+  --text-muted: rgba(242,232,216,0.7);
+  --transition-slow: 1.2s cubic-bezier(.19,1,.22,1);
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+/* ======================================================
+   RESET
+====================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    header {
-      padding: 60px 8vw;
-      text-align: center;
-      animation: fadeDown 1.5s ease;
-    }
+body {
+  background: linear-gradient(180deg, var(--bg-main), var(--bg-dark));
+  font-family: 'Inter', sans-serif;
+  color: var(--text-main);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
 
-    header img {
-      width: 140px;
-      margin-bottom: 30px;
-    }
+/* ======================================================
+   TYPOGRAPHY
+====================================================== */
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
 
-    h1, h2 {
-      font-family: 'Cormorant Garamond', serif;
-      letter-spacing: 2px;
-      font-weight: 500;
-    }
+h1 {
+  font-size: clamp(3.2rem, 6vw, 5rem);
+  color: var(--gold);
+}
 
-    h1 {
-      font-size: 3.5rem;
-      color: var(--gold);
-    }
+h2 {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  text-align: center;
+  color: var(--gold);
+}
 
-    p {
-      max-width: 720px;
-      margin: 30px auto;
-      font-size: 1.05rem;
-      color: var(--muted);
-    }
+p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 780px;
+  margin: 0 auto;
+}
 
-    section {
-      padding: 120px 8vw;
-    }
+/* ======================================================
+   NAVIGATION
+====================================================== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 25px 8vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(6px);
+}
 
-    .divider {
-      width: 80px;
-      height: 1px;
-      background: var(--gold);
-      margin: 50px auto;
-      opacity: 0.6;
-    }
+nav img {
+  height: 42px;
+}
 
-    /* VISION GRID */
-    .vision-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 60px;
-      margin-top: 80px;
-    }
+nav ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
 
-    .card {
-      text-align: center;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 1s ease;
-    }
+nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: color .3s ease;
+}
 
-    .card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+nav a:hover {
+  color: var(--gold);
+}
 
-    .card img {
-      width: 100%;
-      max-width: 360px;
-      border-radius: 6px;
-      margin-bottom: 25px;
-    }
+/* ======================================================
+   HERO
+====================================================== */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+}
 
-    .card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.04), transparent 70%);
+  animation: ambientGlow 12s infinite alternate ease-in-out;
+}
 
-    /* FOOTER */
-    footer {
-      padding: 80px 8vw;
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 10vw;
+}
 
-    /* ANIMATIONS */
-    @keyframes fadeDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+.hero p {
+  margin-top: 30px;
+  font-size: 1.1rem;
+}
+
+/* ======================================================
+   SECTIONS
+====================================================== */
+section {
+  padding: 160px 8vw;
+  position: relative;
+}
+
+.divider {
+  width: 90px;
+  height: 1px;
+  background: var(--gold);
+  margin: 60px auto;
+  opacity: 0.6;
+}
+
+/* ======================================================
+   ABOUT
+====================================================== */
+.about {
+  text-align: center;
+}
+
+/* ======================================================
+   VISION GRID
+====================================================== */
+.vision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 100px;
+  margin-top: 120px;
+}
+
+.vision-item {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: var(--transition-slow);
+}
+
+.vision-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vision-item img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 8px;
+  transition: transform 1s ease, box-shadow 1s ease;
+}
+
+.vision-item img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 40px 120px rgba(0,0,0,0.45);
+}
+
+.vision-item h3 {
+  margin-top: 30px;
+  font-size: 1.7rem;
+  color: var(--gold);
+}
+
+/* ======================================================
+   FOOTER
+====================================================== */
+footer {
+  padding: 120px 8vw;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ======================================================
+   ANIMATIONS
+====================================================== */
+@keyframes ambientGlow {
+  0% { opacity: 0.4; }
+  100% { opacity: 0.8; }
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER / HERO -->
-  <header>
-    <!-- LOGO -->
-    <img src="LogoZuvoo.jpeg" alt="Zuvoo Logo">
+<!-- NAV -->
+<nav>
+  <img src="BildZuvooLogo.pgn.jpeg" alt="ZUVOO">
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#vision">Vision</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
     <h1>ZUVOO</h1>
     <p>
-      A creative luxury studio driven by refinement, precision, and timeless design.
-      <br>
-      Quiet. Intentional. Enduring.
+      Quiet luxury shaped by restraint, depth, and intention.  
+      Built for decades — not moments.
     </p>
-  </header>
+  </div>
+</section>
 
-  <!-- ABOUT -->
-  <section>
-    <h2 style="text-align:center;">About Us</h2>
-    <div class="divider"></div>
-    <p>
-      ZUVOO was born from a deep respect for aesthetics, detail, and restraint.
-      We believe true luxury does not shout — it speaks quietly through quality,
-      balance, and meaning.
-    </p>
-  </section>
+<!-- ABOUT -->
+<section id="about" class="about">
+  <h2>About Us</h2>
+  <div class="divider"></div>
+  <p>
+    ZUVOO is a creative luxury studio driven by refinement, precision, and timeless design.
+    We believe that true luxury does not shout. It whispers through quality, balance, and meaning.
+  </p>
+</section>
 
-  <!-- VISION -->
-  <section>
-    <h2 style="text-align:center;">Vision</h2>
-    <div class="divider"></div>
+<!-- VISION -->
+<section id="vision">
+  <h2>Vision</h2>
+  <div class="divider"></div>
 
-    <div class="vision-grid">
+  <div class="vision-grid">
 
-      <!-- WATCH -->
-      <div class="card">
-        <img src="Obsidian I.jpeg" alt="Obsidian I Watch">
-        <h3>Obsidian I</h3>
-        <p>
-          A timepiece designed not to impress — but to endure.
-        </p>
-      </div>
-
-      <!-- PERFUME 1 -->
-      <div class="card">
-        <img src="orryx noir.jpeg" alt="Orryx Noir">
-        <h3>Orryx Noir</h3>
-        <p>
-          A fragrance shaped by depth, silence, and contrast.
-        </p>
-      </div>
-
-      <!-- PERFUME 2 -->
-      <div class="card">
-        <img src="orryx noir2.jpeg" alt="Orryx Noir Detail">
-      </div>
-
-      <!-- PERFUME 3 -->
-      <div class="card">
-        <img src="orryx noir3.jpeg" alt="Orryx Noir Atmosphere">
-      </div>
-
+    <div class="vision-item">
+      <img src="Obsidian I.jpeg" alt="Obsidian I">
+      <h3>Obsidian I</h3>
+      <p>A timepiece defined by permanence and calm authority.</p>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    Follow us on X · @zuvoostudio  
-    <br>
-    info@zuvoo-luxury.com  
-    <br><br>
-    © ZUVOO — This is only the beginning.
-  </footer>
+    <div class="vision-item">
+      <img src="orryx noir.jpeg" alt="Orryx Noir">
+      <h3>Orryx Noir</h3>
+      <p>A fragrance born from darkness, silence, and contrast.</p>
+    </div>
 
-  <!-- JAVASCRIPT (REVEAL ANIMATIONS) -->
-  <script>
-    const cards = document.querySelectorAll('.card');
+    <div class="vision-item">
+      <img src="orryx noir2.jpeg" alt="Orryx Noir Detail">
+    </div>
 
-    const reveal = () => {
-      const trigger = window.innerHeight * 0.85;
-      cards.forEach(card => {
-        const top = card.getBoundingClientRect().top;
-        if (top < trigger) {
-          card.classList.add('visible');
-        }
-      });
-    };
+    <div class="vision-item">
+      <img src="orryx noir3.jpeg" alt="Orryx Noir Atmosphere">
+    </div>
 
-    window.addEventListener('scroll', reveal);
-    reveal();
-  </script>
+  </div>
+</section>
 
+<!-- FOOTER -->
+<footer id="contact">
+  Follow us on X · @zuvoostudio  
+  <br>
+  info@zuvoo-luxury.com  
+  <br><br>
+  © ZUVOO — This is only the beginning.
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+const items = document.querySelectorAll('.vision-item');
+
+const revealItems = () => {
+  const trigger = window.innerHeight * 0.8;
+  items.forEach(item => {
+    const top = item.getBoundingClientRect().top;
+    if (top < trigger) {
+      item.classList.add('visible');
+    }
+  });
+};
+
+window.addEventListener('scroll', revealItems);
+revealItems();
+</script>
+
+</body>
 </body>
 </html>
